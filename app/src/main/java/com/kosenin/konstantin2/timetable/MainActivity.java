@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             mFirebaseDatabase = FirebaseDatabase.getInstance();
             mGruppeDBRef = FirebaseDatabase.getInstance().getReference().child("University").child("UNN").child("Faculty").child("RGF");
 
+
             final ListView listView = (ListView) findViewById(R.id.lv_main);
 
 
