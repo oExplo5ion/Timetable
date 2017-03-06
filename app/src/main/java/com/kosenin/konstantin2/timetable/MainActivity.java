@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
             final ListView listView = (ListView) findViewById(R.id.lv_main);
 
 
-
-
             mGruppeChildEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
