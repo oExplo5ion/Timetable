@@ -10,6 +10,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.kosenin.konstantin2.timetable.classes.FireBaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +22,13 @@ public class MainActivity extends AppCompatActivity {
         private ChildEventListener mGruppeChildEventListener;
 
 
-
-
-
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
             mFirebaseDatabase = FirebaseDatabase.getInstance();
-            mGruppeDBRef = FirebaseDatabase.getInstance().getReference().child("University").child("UNN").child("Faculty").child("RGF");
+            mGruppeDBRef = FireBaseHelper.getRGF();
 
 
             final ListView listView = (ListView) findViewById(R.id.lv_main);
