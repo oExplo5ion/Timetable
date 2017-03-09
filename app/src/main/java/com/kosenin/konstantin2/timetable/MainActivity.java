@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
 
             mFirebaseDatabase = FirebaseDatabase.getInstance();
-            mGruppeDBRef = FireBaseHelper.getRGF();
+            mGruppeDBRef = FireBaseHelper.getUniversity();
+            final List<String> lst = new ArrayList<String>(); // Result will be holded Here
 
 
             final ListView listView = (ListView) findViewById(R.id.lv_main);
@@ -37,11 +38,8 @@ public class MainActivity extends AppCompatActivity {
             mGruppeChildEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                    List<String> lst = new ArrayList<String>(); // Result will be holded Here
-                    for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                        lst.add(String.valueOf(dsp.getKey())); //add result into array list
-                    }
+                    
+                    lst.add(dataSnapshot.getKey());
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, lst);
                     listView.setAdapter(adapter);
 
