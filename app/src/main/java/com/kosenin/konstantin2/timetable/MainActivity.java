@@ -3,7 +3,10 @@ package com.kosenin.konstantin2.timetable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,9 +24,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static android.R.attr.onClick;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mGruppeDBRef;
@@ -126,8 +130,13 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+        Button LogOutButton = (Button) findViewById(R.id.log_out);
+
+        LogOutButton.setOnClickListener(this);
 
     }
+
+
 
     // Adding Authentification Listener
     @Override
@@ -142,5 +151,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         mTimetableAuth.removeAuthStateListener(mTimetableAuthListener);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        AuthUI.getInstance().signOut(this);
     }
 }
