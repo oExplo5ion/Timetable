@@ -1,12 +1,17 @@
 package com.kosenin.konstantin2.timetable;
 
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,10 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.kosenin.konstantin2.timetable.classes.FireBaseHelper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static android.R.attr.onClick;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -43,11 +45,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // action bar
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // fire base
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mTimetableAuth = FirebaseAuth.getInstance();
 
 
-        mGruppeDBRef = FireBaseHelper.getRGF().child("Gruppe").child("j915d");
+//        mGruppeDBRef = FireBaseHelper.getRGF().child("Gruppe").child("j915d");
+        mGruppeDBRef = FireBaseHelper.getUniversity();
         final List<String> lst = new ArrayList<String>(); // Result will be holded Here
 
 
@@ -128,10 +136,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
 
-        Button LogOutButton = (Button) findViewById(R.id.log_out);
-
-        LogOutButton.setOnClickListener(this);
-
     }
 
 
@@ -155,4 +159,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         AuthUI.getInstance().signOut(this);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.log_out:
+                // log out
+                break;
+        }
+        return true;
+    }
+
 }
