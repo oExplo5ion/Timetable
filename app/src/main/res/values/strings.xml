@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Timetable</string>
+
+    <string name="facebook_application_id" translatable="false">811515275663529</string>
 </resources>

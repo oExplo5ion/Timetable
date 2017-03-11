@@ -104,26 +104,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         };
         mGruppeDBRef.addChildEventListener(mGruppeChildEventListener);
 
-
+        // Listening for user authentification. If yes -> show toast. If not -> start Sign In flow
         mTimetableAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                if (user != null)
-                {
+                if (user != null) {
                     //signed in
                     Toast.makeText(MainActivity.this, "Успешный вход", Toast.LENGTH_LONG).show();
-                }
-                else
-                {
+                } else {
                     //signed out
                     startActivityForResult(
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()
                                     .setIsSmartLockEnabled(false)
                                     .setProviders(AuthUI.EMAIL_PROVIDER,
-                                            AuthUI.GOOGLE_PROVIDER)
+                                            AuthUI.GOOGLE_PROVIDER,
+                                            AuthUI.FACEBOOK_PROVIDER)
                                     .build(),
                             RC_SIGN_IN);
                 }
@@ -135,7 +133,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LogOutButton.setOnClickListener(this);
 
     }
-
 
 
     // Adding Authentification Listener
