@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity  {
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mGruppeDBRef;
@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     // Adding Authentification Listener
     @Override
     protected void onResume() {
@@ -159,12 +158,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTimetableAuth.removeAuthStateListener(mTimetableAuthListener);
     }
 
-
-    @Override
-    public void onClick(View v) {
-        AuthUI.getInstance().signOut(this);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -176,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.log_out:
-                // log out
+                AuthUI.getInstance().signOut(this);
                 break;
         }
         return true;
