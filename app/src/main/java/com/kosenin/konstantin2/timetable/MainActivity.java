@@ -1,17 +1,15 @@
 package com.kosenin.konstantin2.timetable;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -54,12 +52,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTimetableAuth = FirebaseAuth.getInstance();
 
 
-//        mGruppeDBRef = FireBaseHelper.getRGF().child("Gruppe").child("j915d");
         mGruppeDBRef = FireBaseHelper.getUniversity();
         final List<String> lst = new ArrayList<String>(); // Result will be holded Here
-
-
         final ListView listView = (ListView) findViewById(R.id.lv_main);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String unnString = lst.get(position);
+                Intent intent = new Intent(MainActivity.this, UNNActivity.class);
+                intent.putExtra("unn", unnString);
+                startActivity(intent);
+            }
+        });
 
 
         mGruppeChildEventListener = new ChildEventListener() {
