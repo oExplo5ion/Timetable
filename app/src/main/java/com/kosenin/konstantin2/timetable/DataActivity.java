@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,7 +38,6 @@ public class DataActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // accept data from intent
-        String data = getIntent().getExtras().getString("data");
         final Type type = (Type) getIntent().getExtras().get("type");
 
         // switch data
@@ -75,7 +73,6 @@ public class DataActivity extends AppCompatActivity {
 
                 if (type != Type.RGF) {
                     Intent intent = new Intent(DataActivity.this, DataActivity.class);
-                    intent.putExtra("data", lst.get(position));
                     intent.putExtra("type", finalCallType);
                     startActivity(intent);
                 }
@@ -128,7 +125,9 @@ public class DataActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
             case R.id.log_out:
-                AuthUI.getInstance().signOut(this);
+                Intent intent = new Intent(DataActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 break;
         }
         return true;

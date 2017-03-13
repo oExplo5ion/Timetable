@@ -4,4 +4,6 @@
 
     <string name="logout">Log out</string>
     <string name="university">University</string>
+    <string name="warning">Warning!</string>
+    <string name="noInternetMessage">No internet connection.</string>
 </resources>

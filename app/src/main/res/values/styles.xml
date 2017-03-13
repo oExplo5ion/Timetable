@@ -11,6 +11,7 @@
     <style name="TimeTableActionBar" parent="Base.Widget.AppCompat.ActionBar">
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColorSecondary">@android:color/darker_gray</item>
+        <item name="android:tint">@android:color/white</item>
     </style>
 
 </resources>
