@@ -50,19 +50,19 @@ public class MainActivity extends AppCompatActivity  {
         // fire base
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mTimetableAuth = FirebaseAuth.getInstance();
-
-
         mGruppeDBRef = FireBaseHelper.getUniversity();
-        final List<String> lst = new ArrayList<String>(); // Result will be holded Here
+
+        final List<String> lst = new ArrayList<>(); // Result will be holded Here
         final ListView listView = (ListView) findViewById(R.id.lv_main);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String unnString = lst.get(position);
-                Intent intent = new Intent(MainActivity.this, UNNActivity.class);
-                intent.putExtra("unn", unnString);
+                Intent intent = new Intent(MainActivity.this, DataActivity.class);
+                intent.putExtra("data", lst.get(position));
+                intent.putExtra("type", DataActivity.Type.UNN);
                 startActivity(intent);
+
             }
         });
 
