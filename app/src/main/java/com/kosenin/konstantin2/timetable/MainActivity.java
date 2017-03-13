@@ -113,10 +113,7 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                List<String> lst = new ArrayList<String>(); // Result will be holded Here
-                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                    lst.add(String.valueOf(dsp.getKey())); //add result into array list
-                }
+                lst.add(dataSnapshot.getKey());
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, lst);
                 listView.setAdapter(adapter);
 
@@ -124,10 +121,7 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                List<String> lst = new ArrayList<String>(); // Result will be holded Here
-                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                    lst.add(String.valueOf(dsp.getKey())); //add result into array list
-                }
+                lst.add(dataSnapshot.getKey());
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, lst);
                 listView.setAdapter(adapter);
 
