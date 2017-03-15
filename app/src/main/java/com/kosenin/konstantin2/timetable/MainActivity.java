@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -47,6 +48,10 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
 
         // action bar
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -81,7 +86,7 @@ public class MainActivity extends AppCompatActivity  {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            //In case of many universities pass position
                 Intent intent = new Intent(MainActivity.this, DataActivity.class);
                 intent.putExtra("type", DataActivity.Type.UNN);
                 startActivity(intent);
