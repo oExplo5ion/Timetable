@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 
-public class ScheduleActivity extends FragmentActivity {
+public class ScheduleActivity extends AppCompatActivity {
 
 
 
@@ -23,7 +23,7 @@ public class ScheduleActivity extends FragmentActivity {
 
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new SchedulePagerAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new SchedulePagerAdapter(getFragmentManager()));
 
 
 

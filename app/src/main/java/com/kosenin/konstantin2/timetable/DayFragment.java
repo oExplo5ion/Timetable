@@ -28,7 +28,7 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
  * Created by Konstantin2 on 15.03.2017.
  */
 
-public class DayFragment extends android.support.v4.app.Fragment {
+public class DayFragment extends Fragment {
 
     private DatabaseReference reference;
     private FirebaseDatabase database;
@@ -58,7 +58,7 @@ public class DayFragment extends android.support.v4.app.Fragment {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
                lessons.add(dataSnapshot.getKey());
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, lessons);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.simple_listview_edited, lessons);
                 listView.setAdapter(adapter);
 
             }
@@ -66,7 +66,7 @@ public class DayFragment extends android.support.v4.app.Fragment {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 lessons.add(dataSnapshot.getKey());
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, lessons);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.simple_listview_edited, lessons);
                 listView.setAdapter(adapter);
 
             }
@@ -74,7 +74,7 @@ public class DayFragment extends android.support.v4.app.Fragment {
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 lessons.add(dataSnapshot.getKey());
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, lessons);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.simple_listview_edited);
                 listView.setAdapter(adapter);
 
             }
@@ -82,7 +82,7 @@ public class DayFragment extends android.support.v4.app.Fragment {
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
                 lessons.add(dataSnapshot.getKey());
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, lessons);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.simple_listview_edited, lessons);
                 listView.setAdapter(adapter);
 
             }
@@ -97,7 +97,7 @@ public class DayFragment extends android.support.v4.app.Fragment {
         return view;
     }
 
-    public static android.support.v4.app.Fragment newInstance() {
+    public static Fragment newInstance() {
 
         DayFragment dayFragment = new DayFragment();
         return dayFragment;
